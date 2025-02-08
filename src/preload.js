@@ -1,5 +1,9 @@
-const { contextBridge } = require("electron");
+const { contextBridge, ipcRenderer } = require("electron");
 
-contextBridge.exposeInMainWorld("electronAPI", {
-    example: () => console.log("Hello from Preload!")
+console.log("🚀 preload.js IS RUNNING!");
+
+contextBridge.exposeInMainWorld("electron", {
+    sendAuthSuccess: () => {
+        ipcRenderer.send("auth-success");
+    }
 });

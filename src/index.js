@@ -1,22 +1,22 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 
+let authWindow;
 let mainWindow;
 
 app.whenReady().then(() => {
     // Open authentication window first
     authWindow = new BrowserWindow({
-        width: 1000,
-        height: 700,
+        width: 400,
+        height: 500,
         autoHideMenuBar: true,
         resizable: false,
-        // frame: false, // Google-style minimal window
-        alwaysOnTop: true, // ✅ Always on top
         icon: path.join(__dirname, "assets/icon.png"), // ✅ Set App Icon
         webPreferences: {
-            preload: path.join(__dirname, "preload.js"),
-            nodeIntegration: false,
-            contextIsolation: true
+            preload: path.join(__dirname, "preload.js"), // ✅ Use preload
+            contextIsolation: true,
+            enableRemoteModule: false,
+            nodeIntegration: false  // ❌ Keep nodeIntegration disabled for security
         }
     });
 
@@ -29,6 +29,7 @@ app.whenReady().then(() => {
 });
 
 function createMainWindow() {
+
     mainWindow = new BrowserWindow({
         width: 1000,
         height: 700,
