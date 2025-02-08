@@ -21,5 +21,8 @@
   "homepage": "https://github.com/Dunit05/nexus.ai-frontend#readme",
   "devDependencies": {
     "electron": "^34.1.1"
+  },
+  "dependencies": {
+    "firebase": "^11.3.0"
   }
 }

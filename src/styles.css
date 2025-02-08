@@ -69,3 +69,29 @@ body {
     margin-top: 20px;
     padding: 10px;
 }
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212;
+    color: white;
+}
+
+.auth-box {
+    background: #1E1E1E;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.google-btn {
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
