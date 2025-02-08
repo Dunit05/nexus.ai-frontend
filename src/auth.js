@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const loginBtn = document.getElementById("googleLogin");
+    const loginBtn = document.getElementById("nexusLogin");
 
     if (loginBtn) {
 
