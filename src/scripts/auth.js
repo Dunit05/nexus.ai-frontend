@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+
     const signUpForm = document.querySelector("form"); // Selects the form
     const signInForm = document.querySelector("form");
 

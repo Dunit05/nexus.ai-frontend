@@ -1,46 +1,13 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #121212;
+    background-color: #ffffff;
     color: white;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Adjusted for proper layout */
     height: 100vh;
-}
-
-/* Notes List */
-.notes-list {
-    margin-top: 20px;
-    padding: 10px;
-}
-
-.auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #121212;
-    color: white;
-}
-
-.auth-box {
-    background: #1E1E1E;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.nexus-btn {
-    background-color: #4285F4;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
 }
 
 /* Custom Title Bar */
@@ -51,32 +18,21 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    padding: 0 15px;
-    -webkit-app-region: drag; /* Enables dragging */
-    position: absolute;
+    padding: 0;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
 }
 
-/* Keep the buttons interactive */
-.title-right button,
-.nav-button {
-    -webkit-app-region: no-drag;
-}
-
-/* App Logo */
-.app-icon {
-    height: 25px;
-    margin-right: 10px;
-}
-
-.app-title {
-    font-size: 16px;
-    font-weight: bold;
-}
-
 /* Navigation buttons */
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; /* Makes it take available space */
+    gap: 20px; /* Increases spacing */
+}
+
 .nav-button {
     background: none;
     border: none;
@@ -95,13 +51,31 @@ body {
 .title-right {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: flex-end;
+    gap: 15px;
+    padding-right: 20px; /* Pushes buttons further right */
+    min-width: 80px; /* Ensures they don’t collapse */
 }
 
+
+/* Fix: Ensure window controls are fully visible */
 #minimize, #close {
     background: none;
     border: none;
     color: white;
-    font-size: 16px;
+    font-size: 18px;  /* Increase size for better visibility */
     cursor: pointer;
+    width: 30px;  /* Ensure the buttons have proper width */
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-app-region: no-drag; /* ✅ Ensures buttons are clickable */
 }
+
+#minimize:hover, #close:hover {
+    background: #ff5555;
+    color: white;
+    border-radius: 5px;
+}
+

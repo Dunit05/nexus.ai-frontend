@@ -1,12 +1,29 @@
-const { contextBridge, ipcRenderer } = require("electron");
+// const { contextBridge, ipcRenderer } = require("electron");
 
-console.log("🚀 preload.js IS RUNNING!"); // ✅ Debugging Log
+// console.log("✅ preload.js is running on the signup page!");
 
-contextBridge.exposeInMainWorld("electron", {
-    // Authentication Success Event
-    sendAuthSuccess: () => ipcRenderer.send("auth-success"),
+// contextBridge.exposeInMainWorld("electron", {
+//     sendAuthSuccess: () => ipcRenderer.send("auth-success"),
+//     minimizeWindow: () => ipcRenderer.send("window-minimize"),
+//     closeWindow: () => ipcRenderer.send("window-close"),
+// });
 
-    // Window Controls
-    maximizeWindow: () => ipcRenderer.send("window-maximize"),
-    closeWindow: () => ipcRenderer.send("window-close"),
-});
+const { ipcRenderer } = require("electron");
+
+console.log("✅ preload.js is running!");
+
+// ✅ Expose Electron IPC to the renderer process
+window.electron = {
+    sendAuthSuccess: () => {
+        console.log("🔹 Sending auth-success event");
+        ipcRenderer.send("auth-success");
+    },
+    minimizeWindow: () => {
+        console.log("🔹 Sending window-minimize event");
+        ipcRenderer.send("window-minimize");
+    },
+    closeWindow: () => {
+        console.log("🔹 Sending window-close event");
+        ipcRenderer.send("window-close");
+    }
+};
