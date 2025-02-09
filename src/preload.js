@@ -1,64 +1,42 @@
-// const { contextBridge, ipcRenderer } = require("electron");
-
-// console.log("✅ preload.js is running on the signup page!");
-
-// contextBridge.exposeInMainWorld("electron", {
-//     sendAuthSuccess: () => ipcRenderer.send("auth-success"),
-//     minimizeWindow: () => ipcRenderer.send("window-minimize"),
-//     closeWindow: () => ipcRenderer.send("window-close"),
-// });
-
 const { ipcRenderer } = require("electron");
 
-console.log("✅ preload.js is running!");
-
-// ✅ Expose Electron IPC to the renderer process
 window.electron = {
-  sendAuthSuccess: () => {
-    console.log("🔹 Sending auth-success event");
-    ipcRenderer.send("auth-success");
-  },
-  minimizeWindow: () => {
-    console.log("🔹 Sending window-minimize event");
-    ipcRenderer.send("window-minimize");
-  },
-  closeWindow: () => {
-    console.log("🔹 Sending window-close event");
-    ipcRenderer.send("window-close");
-  },
+    sendAuthSuccess: () => {
+        console.log("🔹 Sending auth-success event");
+        ipcRenderer.send("auth-success");
+    },
+    minimizeWindow: () => {
+        console.log("🔹 Sending window-minimize event");
+        ipcRenderer.send("window-minimize");
+    },
+    closeWindow: () => {
+        console.log("🔹 Sending window-close event");
+        ipcRenderer.send("window-close");
+    }
 };
 
 // Ensure the DOM is loaded before adding event listeners
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("✅ Home screen loaded!");
+    console.log("✅ Home screen loaded!");
 
-  // Minimize and Close Button Events
-  document.getElementById("minimize").addEventListener("click", () => {
-    window.electron.minimizeWindow();
-  });
+    // Debugging - Check if elements exist before adding event listeners
+    const minimizeBtn = document.getElementById("minimize");
+    const closeBtn = document.getElementById("close");
 
-  document.getElementById("close").addEventListener("click", () => {
-    window.electron.closeWindow();
-  });
+    if (!minimizeBtn) console.error("❌ Minimize button NOT found in DOM!");
+    if (!closeBtn) console.error("❌ Close button NOT found in DOM!");
 
-  // Puzzle Button Events
-  document.getElementById("vault").addEventListener("click", () => {
-    console.log("🔹 Vault clicked");
-    window.location.href = "vault.html";
-  });
+    if (minimizeBtn) {
+        minimizeBtn.addEventListener("click", () => {
+            console.log("🔹 Minimize button clicked");
+            window.electron.minimizeWindow();
+        });
+    }
 
-  document.getElementById("availability").addEventListener("click", () => {
-    console.log("🔹 Check Availability clicked");
-    window.location.href = "avaliability.html";
-  });
-
-  document.getElementById("notes").addEventListener("click", () => {
-    console.log("🔹 Personal Notes clicked");
-    window.location.href = "notes.html";
-  });
-
-  document.getElementById("ask-nexus").addEventListener("click", () => {
-    console.log("🔹 Ask Nexus clicked");
-    window.location.href = "ask-nexus.html";
-  });
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            console.log("🔹 Close button clicked");
+            window.electron.closeWindow();
+        });
+    }
 });
