@@ -1,42 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus AI - Document Vault</title>
-    <link rel="stylesheet" href="../styles/nav.css">
-    <link rel="stylesheet" href="../styles/vault.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
-    <!-- Custom Title Bar (Now at the top) -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus AI - Notes</title>
+    <link rel="stylesheet" href="../styles/nav.css" />
+    <link rel="stylesheet" href="../styles/notes.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      /* General Styling */
+      body {
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        margin: 20px;
+        background: #f4f4f4;
+      }
+
+      /* Container */
+      .container {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 30px;
+        border-radius: 12px;
+        background: white;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Navigation Bar */
+      .title-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 24px;
+        background: #000;
+        color: white;
+      }
+
+      .nav-buttons {
+        display: flex;
+        gap: 16px;
+      }
+
+      .nav-button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .nav-button:hover {
+        opacity: 0.7;
+      }
+
+      .title-right button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .title-right button:hover {
+        opacity: 0.7;
+      }
+
+      /* Input Fields */
+      select,
+      input,
+      button {
+        width: 100%;
+        padding: 14px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 18px;
+        transition: 0.3s;
+      }
+
+      button {
+        background: #000;
+        color: white;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background: #333;
+      }
+
+      /* Notes Section */
+      .notes-container {
+        margin-top: 30px;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: left;
+        background: white;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Individual Note */
+      .note {
+        background: #ffffff;
+        border-left: 6px solid #4780f9;
+        padding: 16px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.08);
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .note:hover {
+        transform: scale(1.02);
+      }
+
+      .note h4 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .note p {
+        margin: 10px 0;
+        font-size: 17px;
+        line-height: 1.5;
+      }
+
+      .note small {
+        color: gray;
+        font-size: 15px;
+      }
+
+      /* Different Note Types */
+      .summary-note {
+        border-left: 6px solid #ffcc00;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .reminder-note {
+        border-left: 6px solid #ff5733;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .todo-note {
+        border-left: 6px solid #4caf50;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
     <div class="title-bar">
-    
-        <div class="nav-buttons">
-            <button class="nav-button"><i class="fas fa-home"></i></button>
-            <button class="nav-button"><i class="fas fa-calendar-alt"></i></button>
-            <button class="nav-button"><i class="fas fa-moon"></i></button>
-        </div>
-    
-        <div class="title-right">
-            <button id="minimize">−</button>
-            <button id="close">✕</button>
-        </div>
+      <div class="nav-buttons">
+        <a href="home.html" class="nav-button"><i class="fas fa-home"></i></a>
+        <button class="nav-button"><i class="fas fa-calendar-alt"></i></button>
+        <button class="nav-button"><i class="fas fa-moon"></i></button>
+      </div>
+      <div class="title-right">
+        <button id="minimize">−</button>
+        <button id="close">✕</button>
+      </div>
     </div>
 
     <!-- Notes Container -->
-    <div class="notes-container">
-        <div class="notes-list" id="notes-list">
-            <!-- Notes will be dynamically added here -->
-        </div>
+    <div class="container">
+      <h2>📌 Notes, Reminders & To-Do List</h2>
 
-        <!-- Add Note Button -->
-        <button class="add-note-btn" id="add-note">
-            <i class="fas fa-plus"></i> Add Note
-        </button>
+      <label for="note-type">Choose Type:</label>
+      <select id="note-type">
+        <option value="summary">📝 Summary</option>
+        <option value="reminder">⏰ Reminder</option>
+        <option value="todo">✅ To-Do</option>
+      </select>
+
+      <label for="note-input">Enter your note:</label>
+      <input
+        type="text"
+        id="note-input"
+        placeholder="Write your note here..."
+      />
+
+      <button id="add-note">Add Note</button>
+
+      <div class="notes-container">
+        <h3>🗒 My Notes:</h3>
+        <div id="notes-list">
+          <!-- Notes will be dynamically added here -->
+        </div>
+      </div>
     </div>
 
-    <script src="../scripts/notes.js"></script>
+    <script>
+      document
+        .getElementById("add-note")
+        .addEventListener("click", async function () {
+          const noteType = document.getElementById("note-type").value;
+          const noteInput = document.getElementById("note-input").value.trim();
+          if (!noteInput) {
+            alert("Please enter a note.");
+            return;
+          }
 
-</body>
+          let endpoint = "";
+          if (noteType === "summary") {
+            endpoint = "/summarize";
+          } else if (noteType === "reminder") {
+            endpoint = "/add_reminder";
+          } else if (noteType === "todo") {
+            endpoint = "/add_task";
+          }
+
+          const requestData = {
+            message: noteInput,
+            user_id: "hackhive",
+          };
+
+          try {
+            const response = await fetch(
+              `https://nexus-ai-backend-omnu.onrender.com${endpoint}`,
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(requestData),
+              }
+            );
+
+            const data = await response.json();
+            console.log("Note Added:", data);
+
+            alert("Note added successfully!");
+            document.getElementById("note-input").value = "";
+            fetchNotes();
+          } catch (error) {
+            console.error("Error adding note:", error);
+            alert("Failed to add note.");
+          }
+        });
+
+      async function fetchNotes() {
+        try {
+          const summaries = await fetchData("summaries");
+          const reminders = await fetchData("reminders");
+          const tasks = await fetchData("tasks");
+
+          document.getElementById("notes-list").innerHTML = `
+            ${summaries.map(noteTemplate("Summary", "summary-note")).join("")}
+            ${reminders.map(reminderTemplate).join("")}
+            ${tasks.map(noteTemplate("To-Do", "todo-note")).join("")}
+          `;
+        } catch (error) {
+          console.error("Error fetching notes:", error);
+        }
+      }
+
+      async function fetchData(type) {
+        const res = await fetch(
+          `https://nexus-ai-backend-omnu.onrender.com/${type}/hackhive`
+        );
+        return await res.json();
+      }
+
+      function noteTemplate(type, cssClass) {
+        return (note) => `
+          <div class="note ${cssClass}">
+            <h4>${type}</h4>
+            <p>${note.summary || note.task}</p>
+            <small>${formatDate(note.timestamp)}</small>
+          </div>
+        `;
+      }
+
+      function reminderTemplate(reminder) {
+        return `
+          <div class="note reminder-note">
+            <h4>⏰ Reminder (${reminder.repeat})</h4>
+            <p>${reminder.reminder_text}</p>
+            <small>${formatDate(reminder.timestamp)}</small>
+          </div>
+        `;
+      }
+
+      function formatDate(timestamp) {
+        if (!timestamp) return "No Date Provided";
+        return new Date(timestamp).toLocaleString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true,
+        });
+      }
+
+      fetchNotes();
+    </script>
+  </body>
 </html>
