@@ -7,10 +7,12 @@ let mainWindow;
 app.whenReady().then(() => {
     // Open authentication window first
     authWindow = new BrowserWindow({
-        width: 400,
-        height: 500,
-        autoHideMenuBar: true,
+        width: 450,
+        height: 650,
         resizable: false,
+        frame: false, // ✅ Removes default title bar
+        titleBarStyle: "hidden", // ✅ Hides default title
+        autoHideMenuBar: true, // ✅ Removes default menu bar
         icon: path.join(__dirname, "assets/icon.png"), // ✅ Set App Icon
         webPreferences: {
             preload: path.join(__dirname, "preload.js"), // ✅ Use preload
@@ -20,19 +22,19 @@ app.whenReady().then(() => {
         }
     });
 
-    authWindow.loadFile("auth.html");
-
-    ipcMain.on("auth-success", () => {
-        authWindow.close();
-        createMainWindow();
-    });
+    authWindow.loadFile("src/pages/signup.html");
 });
 
 function createMainWindow() {
 
     mainWindow = new BrowserWindow({
-        width: 1000,
-        height: 700,
+        width: 450,
+        height: 650,
+        resizable: false,
+        frame: false, // ✅ Removes default title bar
+        titleBarStyle: "hidden", // ✅ Hides default title
+        autoHideMenuBar: true, // ✅ Removes default menu bar
+        icon: path.join(__dirname, "assets/icon.png"), // ✅ Set App Icon
         webPreferences: {
             preload: path.join(__dirname, "preload.js"),
             nodeIntegration: false,
@@ -40,7 +42,23 @@ function createMainWindow() {
         }
     });
 
-    mainWindow.loadFile("index.html");
+    mainWindow.loadFile("src/pages/home.html");
+
+    ipcMain.on("window-minimize", () => {
+        mainWindow.minimize();
+    });
+
+    ipcMain.on("window-maximize", () => {
+        if (mainWindow.isMaximized()) {
+            mainWindow.unmaximize();
+        } else {
+            mainWindow.maximize();
+        }
+    });
+
+    ipcMain.on("window-close", () => {
+        mainWindow.close();
+    });
 }
 
 app.on("window-all-closed", () => {

@@ -1,0 +1,107 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Notes List */
+.notes-list {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212;
+    color: white;
+}
+
+.auth-box {
+    background: #1E1E1E;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.nexus-btn {
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Custom Title Bar */
+.title-bar {
+    background: #161B22;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0 15px;
+    -webkit-app-region: drag; /* Enables dragging */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Keep the buttons interactive */
+.title-right button,
+.nav-button {
+    -webkit-app-region: no-drag;
+}
+
+/* App Logo */
+.app-icon {
+    height: 25px;
+    margin-right: 10px;
+}
+
+.app-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Navigation buttons */
+.nav-button {
+    background: none;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.nav-button:hover {
+    background: #30363D;
+    border-radius: 5px;
+}
+
+/* Custom Window Controls */
+.title-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#minimize, #close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}

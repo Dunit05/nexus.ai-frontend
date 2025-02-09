@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=450, height=650, initial-scale=1.0">
+    <title>Sign Up - Nexus AI</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles/auth.css">
+</head>
+<body>
+    <div class="container">
+        <img src="../assets/nexus_logo_text_transparent.png" alt="Nexus AI Logo" class="logo">
+        <h1>Sign Up</h1>
+
+        <form>
+            <input type="email" id="signUpEmail" placeholder="Email" required>
+            <div class="password-container">
+                <input type="password" id="signUpPassword" placeholder="Password" required>
+                <span class="eye-icon"><i class="fa-solid fa-eye"></i></span>
+            </div>
+
+            <!-- Social Login Buttons -->
+            <div class="social-login">
+                <button type="button" class="social-btn google">
+                    <i class="fa-brands fa-google"></i>
+                </button>
+                <button type="button" class="social-btn facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                </button>
+                <button type="button" class="social-btn apple">
+                    <i class="fa-brands fa-apple"></i>
+                </button>
+            </div>
+
+            <button type="submit" id="signUpBtn" class="signup-btn">Sign Up</button>
+        </form>
+
+        <p class="login-text">Already have an account? <a href="#" id="switchToLogin" class="login-link">Login</a></p>
+
+        <!-- Load auth.js -->
+        <script src="../scripts/auth.js"></script>
+    </div>
+</body>
+</html>
