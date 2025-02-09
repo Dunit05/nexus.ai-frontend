@@ -1,91 +1,93 @@
 /* Chat Page Container */
 .chat-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  max-height: 500px;
 }
 
 /* Chat Title */
 .chat-container h2 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
 }
 
 /* Chat Box */
 .chat-box {
-    width: 80%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    background: #f4f4f4;
-    border-radius: 10px;
-    min-height: 300px;
+  width: 80%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  /* background: #f4f4f4; */
+  border-radius: 10px;
+  min-height: 300px;
 }
 
 /* User & AI Message Styles */
 .chat-message {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 16px;
-    width: fit-content;
-    max-width: 80%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  width: fit-content;
+  max-width: 80%;
 }
 
 /* User Message */
 .user-message {
-    background: black;
-    color: white;
-    align-self: flex-end;
+  /* background: black; */
+  color: white;
+  align-self: flex-end;
 }
 
 /* AI Message */
 .ai-message {
-    background: white;
-    color: black;
-    align-self: flex-start;
-    display: flex;
-    flex-direction: row;
+  /* background: white; */
+  color: black;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
 }
 
 /* Chat Icons */
 .chat-message i {
-    margin-left: 10px;
-    font-size: 20px;
+  margin-left: 10px;
+  font-size: 20px;
 }
 
 /* Message Input Box */
 .message-box {
-    width: 80%;
-    max-width: 400px;
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
+  width: 80%;
+  max-width: 400px;
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .message-box input {
-    flex-grow: 1;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid black;
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid black;
 }
 
 .message-box button {
-    background: black;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .message-box button i {
-    font-size: 16px;
+  font-size: 16px;
 }

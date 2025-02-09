@@ -1,54 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ask Nexus - Nexus AI</title>
-    <link rel="stylesheet" href="../styles/nav.css">
-    <link rel="stylesheet" href="../styles/chat.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
-    <!-- Custom Title Bar (Now at the top) -->
-    <div class="title-bar">
-    
-        <div class="nav-buttons">
-            <button class="nav-button"><i class="fas fa-home"></i></button>
-            <button class="nav-button"><i class="fas fa-calendar-alt"></i></button>
-            <button class="nav-button"><i class="fas fa-moon"></i></button>
-        </div>
-    
-        <div class="title-right">
-            <button id="minimize">−</button>
-            <button id="close">✕</button>
-        </div>
-    </div>
+    <link rel="stylesheet" href="../styles/nav.css" />
+    <link rel="stylesheet" href="../styles/chat.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      body {
+        overflow: hidden;
+      }
+      /* Full height container */
+      .chat-container {
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        scrollbar-width: none; /* For Firefox */
+        -ms-overflow-style: none; /* For Internet Explorer and Edge */
+      }
 
+      /* Chat box with scrolling */
+      .chat-box {
+        flex-grow: 1;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow-y: auto; /* ✅ Allows scrolling */
+        max-height: 75vh; /* ✅ Limits chat box height */
+      }
+
+      .chat-message {
+        display: flex;
+        align-items: center;
+        max-width: 80%;
+      }
+
+      .chat-message p {
+        padding: 10px;
+        border-radius: 8px;
+        word-wrap: break-word;
+      }
+
+      .user-message {
+        align-self: flex-end;
+        text-align: right;
+      }
+
+      .user-message p {
+        background: #4780f9;
+        color: #ffffff;
+      }
+
+      .ai-message {
+        align-self: flex-start;
+        text-align: left;
+      }
+
+      .ai-message p {
+        background: #000000;
+        color: white;
+      }
+
+      /* Fixed message input box */
+      .message-box {
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+        background: white;
+        position: sticky;
+        bottom: 0;
+      }
+
+      #user-input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      #send-message {
+        background: #000000;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #send-message:hover {
+        background: #3f3f3f;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Custom Title Bar -->
+    <div class="title-bar">
+      <div class="nav-buttons">
+        <a href="home.html" class="nav-button"><i class="fas fa-home"></i></a>
+        <button class="nav-button"><i class="fas fa-calendar-alt"></i></button>
+        <button class="nav-button"><i class="fas fa-moon"></i></button>
+      </div>
+      <div class="title-right">
+        <button id="minimize">−</button>
+        <button id="close">✕</button>
+      </div>
+    </div>
 
     <!-- Chat Interface -->
     <div class="chat-container">
-        <h2>ASK NEXUS</h2>
+      <h2>ASK NEXUS</h2>
 
-        <!-- Chat Messages -->
-        <div class="chat-box" id="chat-box">
-            <div class="chat-message user-message">
-                <p>Who invented TikTok?</p>
-                <i class="fas fa-user"></i>
-            </div>
-            <div class="chat-message ai-message">
-                <i class="fas fa-robot"></i>
-                <p>TikTok was invented by ...</p>
-            </div>
-        </div>
+      <!-- Chat Messages -->
+      <div class="chat-box" id="chat-box"></div>
 
-        <!-- Message Input Box -->
-        <div class="message-box">
-            <input type="text" id="user-input" placeholder="Type message">
-            <button id="send-message"><i class="fas fa-paper-plane"></i></button>
-        </div>
+      <!-- Message Input Box -->
+      <div class="message-box">
+        <input type="text" id="user-input" placeholder="Type your message..." />
+        <button id="send-message"><i class="fas fa-paper-plane"></i></button>
+      </div>
     </div>
 
-    <script src="../scripts/ask-nexus.js"></script>
+    <script>
+      document
+        .getElementById("send-message")
+        .addEventListener("click", sendMessage);
+      document
+        .getElementById("user-input")
+        .addEventListener("keypress", function (event) {
+          if (event.key === "Enter") {
+            sendMessage();
+          }
+        });
 
-</body>
+      async function sendMessage() {
+        const userInput = document.getElementById("user-input");
+        const chatBox = document.getElementById("chat-box");
+
+        const userMessage = userInput.value.trim();
+        if (userMessage === "") return;
+
+        // Display user message
+        chatBox.innerHTML += `
+                    <div class="chat-message user-message">
+                        <p>${userMessage}</p>
+                    </div>
+                `;
+        scrollToBottom();
+        userInput.value = ""; // Clear input field
+
+        try {
+          const response = await fetch(
+            "https://nexus-ai-backend-omnu.onrender.com/chat",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                user_id: "test_user",
+                message: userMessage,
+              }),
+            }
+          );
+
+          const data = await response.json();
+          console.log("Bot Response:", data);
+
+          // Display AI response
+          chatBox.innerHTML += `
+                        <div class="chat-message ai-message">
+                            <p>${
+                              data.bot_response ||
+                              "Sorry, I didn't understand that."
+                            }</p>
+                        </div>
+                    `;
+          scrollToBottom();
+        } catch (error) {
+          console.error("Error:", error);
+          chatBox.innerHTML += `
+                        <div class="chat-message ai-message">
+                            <p>Error connecting to AI.</p>
+                        </div>
+                    `;
+          scrollToBottom();
+        }
+      }
+
+      function scrollToBottom() {
+        const chatBox = document.getElementById("chat-box");
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+    </script>
+  </body>
 </html>
