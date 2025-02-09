@@ -10,6 +10,76 @@ body {
     overflow: hidden; /* Prevents scrollbar */
 }
 
+/* Custom Title Bar */
+.title-bar {
+    background: #161B22;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -webkit-app-region: drag;
+}
+
+/* Navigation buttons */
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; /* Makes it take available space */
+    gap: 20px; /* Increases spacing */
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.nav-button:hover {
+    background: #30363D;
+    border-radius: 5px;
+}
+
+/* Custom Window Controls */
+.title-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+    padding-right: 20px; /* Pushes buttons further right */
+    min-width: 80px; /* Ensures they don’t collapse */
+}
+
+
+/* Fix: Ensure window controls are fully visible */
+#minimize, #close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;  /* Increase size for better visibility */
+    cursor: pointer;
+    width: 30px;  /* Ensure the buttons have proper width */
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-app-region: no-drag; /* ✅ Ensures buttons are clickable */
+}
+
+#minimize:hover, #close:hover {
+    background: #ff5555;
+    color: white;
+    border-radius: 5px;
+}
+
 /* Login Container */
 .container {
     text-align: center;
