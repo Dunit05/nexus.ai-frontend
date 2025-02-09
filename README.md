@@ -37,21 +37,21 @@ npm start
 ---
 
 ## 🚀 Usage Guide
-On launch, Nexus AI will open the Authentication Window (Sign-in / Sign-up).
-After login, the main productivity dashboard will appear.
-Use the floating boxex to pick a function to assist you in managing tasks.
-Click Close (✖) in the custom title bar for window controls.
+✅ **On launch**, Nexus AI will open the Authentication Window (Sign-in / Sign-up).
+✅ **After login**, the main productivity dashboard will appear.
+✅ **Use the floating boxex** to pick a function to assist you in managing tasks.
+✅ **Click Close (✖)** in the custom title bar for window controls.
 
 ---
 
 ## 🤝 Contributing
 We welcome contributions! Follow these steps:
 
-Fork the repository.
-Create a new branch (git checkout -b feature-name).
-Commit your changes (git commit -m "Added new feature").
-Push to GitHub (git push origin feature-name).
-Submit a Pull Request for review.
+**Fork the repository.**
+**Create a new branch (git checkout -b feature-name).**
+**Commit your changes (git commit -m "Added new feature").**
+**Push to GitHub (git push origin feature-name).**
+**Submit a Pull Request for review.**
 
 ---
 
