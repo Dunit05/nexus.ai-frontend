@@ -4,38 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus AI - Your Centralized Productivity Hub</title>
-    <!-- Custom CSS -->
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../styles/nav.css">
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-    <!-- Custom Title Bar (Now at the top) -->
+    <!-- Custom Title Bar -->
     <div class="title-bar">
-    
         <div class="nav-buttons">
             <button class="nav-button"><i class="fas fa-home"></i></button>
             <button class="nav-button"><i class="fas fa-calendar-alt"></i></button>
             <button class="nav-button"><i class="fas fa-moon"></i></button>
         </div>
-    
         <div class="title-right">
-            <button id="close">✕</button>
+            <button id="close">✕</button> <!-- Close window button -->
         </div>
     </div>
 
     <!-- Main Home Screen -->
     <img src="../assets/nexus_logo_text_transparent.png" alt="Nexus AI Logo" class="logo">
+
     <div class="home-container">
         <div class="puzzle-container">
             <!-- Row 1 -->
             <div class="puzzle-row">
                 <button class="puzzle-btn" id="vault">
-                    <a href="vault.html" ><img src="../assets/Vault.png" alt="Vault" class="vault-icon"></a>
+                    <a href="vault.html"><img src="../assets/Vault.png" alt="Vault" class="vault-icon"></a>
                 </button>
                 <button class="puzzle-btn" id="availability">
-                    <a href="avaliability.html" ><img src="../assets/Check_Ava.png" alt="Check Availability" class="availability-icon"></a>
+                    <a href="avaliability.html"><img src="../assets/Check_Ava.png" alt="Check Availability" class="availability-icon"></a>
                 </button>
             </div>
         
@@ -50,9 +50,9 @@
             </div>
         </div>
     </div>
-    
 
-    <script src="../preload.js"></script>
-    <script src="../scripts/toggle.js"></script>
+    <!-- Load Scripts -->
+    <script src="../preload.js"></script> <!-- Handles preload scripts -->
+    <script src="../scripts/toggle.js"></script> <!-- Handles UI toggles -->
 </body>
 </html>

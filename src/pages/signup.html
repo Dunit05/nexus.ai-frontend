@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=450, height=650, initial-scale=1.0">
     <title>Sign Up - Nexus AI</title>
 
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome Icons for UI elements -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Custom CSS -->
@@ -13,27 +13,29 @@
     <link rel="stylesheet" href="../styles/auth.css">
 </head>
 <body>
-    <div class="container">
-        
-        <!-- Custom Title Bar (Now at the top) -->
-    <div class="title-bar" style="background-color: #000000;">
-    
-        <div class="nav-buttons">
-        </div>
-    
-        <div class="title-right">
-            <button id="close">✕</button>
-        </div>
-    </div>
 
+    <div class="container">
+
+        <!-- Custom Title Bar -->
+        <div class="title-bar" style="background-color: #000000;">
+            <div class="nav-buttons"></div>
+            <div class="title-right">
+                <button id="close">✕</button> <!-- Close window button -->
+            </div>
+        </div>
+
+        <!-- App Logo -->
         <img src="../assets/nexus_logo_text_transparent.png" alt="Nexus AI Logo" class="logo">
         <h1>Sign Up</h1>
 
+        <!-- Signup Form -->
         <form>
             <input type="email" id="signUpEmail" placeholder="Email" required>
+
+            <!-- Password Input with Toggle -->
             <div class="password-container">
                 <input type="password" id="signUpPassword" placeholder="Password" required>
-                <span class="eye-icon"><i class="fa-solid fa-eye"></i></span>
+                <span class="eye-icon"><i class="fa-solid fa-eye"></i></span> <!-- Show/Hide Password -->
             </div>
 
             <!-- Social Login Buttons -->
@@ -49,14 +51,17 @@
                 </button>
             </div>
 
+            <!-- Submit Button -->
             <button type="submit" id="signUpBtn" class="signup-btn">Sign Up</button>
         </form>
 
+        <!-- Login Redirect -->
         <p class="login-text">Already have an account? <a href="#" id="switchToLogin" class="login-link">Login</a></p>
 
-        <!-- Load auth.js -->
-        <script src="../scripts/auth.js"></script>
-        <script src="../scripts/toggle.js"></script>
+        <!-- Load Scripts -->
+        <script src="../scripts/auth.js"></script> <!-- Handles authentication logic -->
+        <script src="../scripts/toggle.js"></script> <!-- Handles password toggle -->
     </div>
+
 </body>
 </html>

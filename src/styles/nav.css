@@ -1,6 +1,8 @@
-/* Custom Title Bar */
-.title-bar {
-    background: #000000;;
+/* ==========================
+   Custom Title Bar
+   ========================== */
+   .title-bar {
+    background: #000000;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -11,18 +13,21 @@
     top: 0;
     left: 0;
     width: 100%;
-    -webkit-app-region: drag;
+    -webkit-app-region: drag; /* Allows the title bar to be draggable */
 }
 
-/* Navigation buttons */
+/* ==========================
+   Navigation Buttons
+   ========================== */
 .nav-buttons {
     background: none;
     border: none;
     cursor: pointer;
     padding: 10px;
-    -webkit-app-region: no-drag;
+    -webkit-app-region: no-drag; /* Ensures buttons remain clickable */
 }
 
+/* Navigation Button Icons */
 .nav-button i {
     font-size: 18px;
     color: white;
@@ -42,25 +47,26 @@
     border-radius: 5px;
 }
 
-/* Custom Window Controls */
+/* ==========================
+   Custom Window Controls
+   ========================== */
 .title-right {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 15px;
     padding-right: 20px; /* Pushes buttons further right */
-    min-width: 80px; /* Ensures they don’t collapse */
+    min-width: 80px; /* Ensures buttons don’t collapse */
 }
-
 
 /* Fix: Ensure window controls are fully visible */
 #minimize, #close {
     background: none;
     border: none;
     color: white;
-    font-size: 18px;  /* Increase size for better visibility */
+    font-size: 18px; /* Increase size for better visibility */
     cursor: pointer;
-    width: 30px;  /* Ensure the buttons have proper width */
+    width: 30px; /* Ensure buttons have proper width */
     height: 30px;
     display: flex;
     align-items: center;
@@ -68,6 +74,7 @@
     -webkit-app-region: no-drag; /* ✅ Ensures buttons are clickable */
 }
 
+/* Hover Effects */
 #minimize:hover, #close:hover {
     background: #ff5555;
     color: white;

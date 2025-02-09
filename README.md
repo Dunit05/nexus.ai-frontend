@@ -2,6 +2,12 @@
 An AI-powered **productivity assistant** built with **Electron.js**.  
 Nexus AI provides **smart note-taking and task management** in a **floating UI**, helping users stay organized efficiently.
 
+## Group 36
+- Vincent Wong
+- Shams Haroon
+- Tommy D. Michallidis
+- Jay Caithesan
+
 ---
 
 ## 📖 **Overview**
