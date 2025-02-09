@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Nexus - Nexus AI</title>
+    <link rel="stylesheet" href="../styles/nav.css">
+    <link rel="stylesheet" href="../styles/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Custom Title Bar (Now at the top) -->
+    <div class="title-bar">
+    
+        <div class="nav-buttons">
+            <button class="nav-button"><i class="fas fa-home"></i></button>
+            <button class="nav-button"><i class="fas fa-calendar-alt"></i></button>
+            <button class="nav-button"><i class="fas fa-moon"></i></button>
+        </div>
+    
+        <div class="title-right">
+            <button id="minimize">−</button>
+            <button id="close">✕</button>
+        </div>
+    </div>
+
+
+    <!-- Chat Interface -->
+    <div class="chat-container">
+        <h2>ASK NEXUS</h2>
+
+        <!-- Chat Messages -->
+        <div class="chat-box" id="chat-box">
+            <div class="chat-message user-message">
+                <p>Who invented TikTok?</p>
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="chat-message ai-message">
+                <i class="fas fa-robot"></i>
+                <p>TikTok was invented by ...</p>
+            </div>
+        </div>
+
+        <!-- Message Input Box -->
+        <div class="message-box">
+            <input type="text" id="user-input" placeholder="Type message">
+            <button id="send-message"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script src="../scripts/ask-nexus.js"></script>
+
+</body>
+</html>

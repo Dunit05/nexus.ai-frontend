@@ -1,0 +1,54 @@
+/* Notes Page Container */
+.notes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: calc(100vh - 50px); /* Adjust for title bar */
+    padding-top: 20px;
+}
+
+/* Notes List */
+.notes-list {
+    width: 80%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Individual Note */
+.note {
+    background: #e0e0e0;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.note:hover {
+    background: #d6d6d6;
+}
+
+/* Add Note Button */
+.add-note-btn {
+    margin-top: 20px;
+    background: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+}
+
+.add-note-btn i {
+    font-size: 18px;
+}

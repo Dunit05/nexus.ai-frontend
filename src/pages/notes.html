@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus AI - Document Vault</title>
+    <link rel="stylesheet" href="../styles/nav.css">
+    <link rel="stylesheet" href="../styles/vault.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Custom Title Bar (Now at the top) -->
+    <div class="title-bar">
+    
+        <div class="nav-buttons">
+            <button class="nav-button"><i class="fas fa-home"></i></button>
+            <button class="nav-button"><i class="fas fa-calendar-alt"></i></button>
+            <button class="nav-button"><i class="fas fa-moon"></i></button>
+        </div>
+    
+        <div class="title-right">
+            <button id="minimize">−</button>
+            <button id="close">✕</button>
+        </div>
+    </div>
+
+    <!-- Notes Container -->
+    <div class="notes-container">
+        <div class="notes-list" id="notes-list">
+            <!-- Notes will be dynamically added here -->
+        </div>
+
+        <!-- Add Note Button -->
+        <button class="add-note-btn" id="add-note">
+            <i class="fas fa-plus"></i> Add Note
+        </button>
+    </div>
+
+    <script src="../scripts/notes.js"></script>
+
+</body>
+</html>
