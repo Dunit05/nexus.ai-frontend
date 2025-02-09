@@ -31,7 +31,6 @@ body {
 /* Row Wrapper */
 .puzzle-row {
     display: flex;
-    /* gap: 20px; */
 }
 
 /* Puzzle Buttons */
@@ -42,8 +41,8 @@ body {
 }
 
 .puzzle-btn img {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     object-fit: contain;
 }
 
@@ -67,5 +66,12 @@ body {
 
 .ask-nexus-icon {
     margin-top: 10px;
-    margin-right: 55px;
+    margin-right: 40px;
+}
+
+.logo {
+    margin-top: 80px;
+    padding-right: 80px;
+    padding-left: 80px;
+    margin-bottom: -95px;
 }

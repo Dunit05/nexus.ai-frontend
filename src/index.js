@@ -119,15 +119,12 @@ function createMainWindow() {
     });
 
     mainWindow.loadFile("src/pages/home.html");
-
-    ipcMain.once("window-minimize", () => {
-        if (mainWindow) mainWindow.minimize();
-    });
-
-    ipcMain.once("window-close", () => {
-        if (mainWindow) mainWindow.close();
-    });
 }
+
+
+ipcMain.once("window-close", () => {
+    app.quit();
+});
 
 app.on("window-all-closed", () => {
     if (process.platform !== "darwin") {
