@@ -27,3 +27,38 @@ window.electron = {
         ipcRenderer.send("window-close");
     }
 };
+
+// Ensure the DOM is loaded before adding event listeners
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("✅ Home screen loaded!");
+
+    // Minimize and Close Button Events
+    document.getElementById("minimize").addEventListener("click", () => {
+        window.electron.minimizeWindow();
+    });
+
+    document.getElementById("close").addEventListener("click", () => {
+        window.electron.closeWindow();
+    });
+
+    // Puzzle Button Events
+    document.getElementById("vault").addEventListener("click", () => {
+        console.log("🔹 Vault clicked");
+        window.location.href = "vault.html";
+    });
+
+    document.getElementById("availability").addEventListener("click", () => {
+        console.log("🔹 Check Availability clicked");
+        window.location.href = "availability.html";
+    });
+
+    document.getElementById("notes").addEventListener("click", () => {
+        console.log("🔹 Personal Notes clicked");
+        window.location.href = "notes.html";
+    });
+
+    document.getElementById("ask-nexus").addEventListener("click", () => {
+        console.log("🔹 Ask Nexus clicked");
+        window.location.href = "ask-nexus.html";
+    });
+});

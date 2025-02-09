@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus AI - Your Centralized Productivity Hub</title>
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles/nav.css">
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -14,9 +15,9 @@
     <div class="title-bar">
     
         <div class="nav-buttons">
-            <button class="nav-button">Home</button>
-            <button class="nav-button">Calendar</button>
-            <button class="nav-button">Dark/Light</button>
+            <button class="nav-button"><i class="fas fa-home"></i></button>
+            <button class="nav-button"><i class="fas fa-calendar-alt"></i></button>
+            <button class="nav-button"><i class="fas fa-moon"></i></button>
         </div>
     
         <div class="title-right">
@@ -24,6 +25,32 @@
             <button id="close">✕</button>
         </div>
     </div>
+
+    <!-- Main Home Screen -->
+    <div class="home-container">
+        <div class="puzzle-container">
+            <!-- Row 1 -->
+            <div class="puzzle-row">
+                <button class="puzzle-btn" id="vault">
+                    <img src="../assets/Vault.png" alt="Vault" class="vault-icon">
+                </button>
+                <button class="puzzle-btn" id="availability">
+                    <img src="../assets/Check_Ava.png" alt="Check Availability" class="availability-icon"> 
+                </button>
+            </div>
+        
+            <!-- Row 2 -->
+            <div class="puzzle-row">
+                <button class="puzzle-btn" id="notes">
+                    <img src="../assets/Notes.png" alt="Personal Notes" class="notes-icon">
+                </button>
+                <button class="puzzle-btn" id="ask-nexus">
+                    <img src="../assets/Ask_Nexus.png" alt="Ask Nexus" class="ask-nexus-icon">
+                </button>
+            </div>
+        </div>
+    </div>
+    
 
     <script src="../preload.js"></script>
 </body>
