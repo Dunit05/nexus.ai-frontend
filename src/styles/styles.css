@@ -1,5 +1,7 @@
-/* General Styles */
-body {
+/* ==========================
+   General Styles
+   ========================== */
+   body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
     color: white;
@@ -10,7 +12,9 @@ body {
     height: 100vh;
 }
 
-/* Main Home Container */
+/* ==========================
+   Main Home Container
+   ========================== */
 .home-container {
     display: flex;
     flex-direction: column;
@@ -19,7 +23,9 @@ body {
     margin-top: 100px;
 }
 
-/* Puzzle Container */
+/* ==========================
+   Puzzle Grid Layout
+   ========================== */
 .puzzle-container {
     display: flex;
     flex-direction: column;
@@ -28,19 +34,21 @@ body {
     margin-left: 15px;
 }
 
-/* Row Wrapper */
+/* Puzzle Row (Aligns buttons horizontally) */
 .puzzle-row {
     display: flex;
-    /* gap: 20px; */
 }
 
-/* Puzzle Buttons */
+/* ==========================
+   Puzzle Buttons
+   ========================== */
 .puzzle-btn {
     background: none;
     border: none;
     cursor: pointer;
 }
 
+/* Button Images */
 .puzzle-btn img {
     width: 170px;
     height: 170px;
@@ -52,17 +60,15 @@ body {
     transform: scale(1.05);
 }
 
-.vault-icon {
-    
-}
-
+/* ==========================
+   Adjustments for Specific Icons
+   ========================== */
 .availability-icon {
-    margin-top:62px;
+    margin-top: 62px;
 }
 
 .notes-icon {
     margin-bottom: 50px;
-
 }
 
 .ask-nexus-icon {
@@ -70,6 +76,9 @@ body {
     margin-right: 55px;
 }
 
+/* ==========================
+   Logo Styling
+   ========================== */
 .logo {
     margin-top: 80px;
     padding-right: 80px;

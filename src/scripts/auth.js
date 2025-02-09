@@ -1,15 +1,27 @@
+// Ensure the DOM is fully loaded before running the script
 document.addEventListener("DOMContentLoaded", function () {
 
-    const signUpForm = document.querySelector("form"); // Selects the form
-    const signInForm = document.querySelector("form");
+    // ==========================
+    // Select Form and Buttons
+    // ==========================
 
-    const signUpBtn = document.getElementById("signUpBtn");
-    const signInBtn = document.getElementById("signInBtn");
+    const signUpForm = document.querySelector("form"); // Selects the first form element
+    const signInForm = document.querySelector("form"); // This is redundant; should target different forms if applicable
 
-    const switchToLogin = document.getElementById("switchToLogin");
-    const switchToSignup = document.getElementById("switchToSignup");
+    const signUpBtn = document.getElementById("signUpBtn"); // Signup button
+    const signInBtn = document.getElementById("signInBtn"); // Signin button
 
+    const switchToLogin = document.getElementById("switchToLogin"); // Link to switch to Login
+    const switchToSignup = document.getElementById("switchToSignup"); // Link to switch to Signup
+
+    // ==========================
     // Handle Signup Form Submission
+    // ==========================
+
+    /**
+     * Listens for a click on the Signup button.
+     * Prevents form submission if fields are invalid, otherwise redirects to home.
+     */
     if (signUpBtn) {
         signUpBtn.addEventListener("click", function (event) {
             event.preventDefault(); // Prevent default form submission
@@ -23,7 +35,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // ==========================
     // Handle Signin Form Submission
+    // ==========================
+
+    /**
+     * Listens for a click on the Signin button.
+     * Prevents form submission if fields are invalid, otherwise redirects to home.
+     */
     if (signInBtn) {
         signInBtn.addEventListener("click", function (event) {
             event.preventDefault(); // Prevent default form submission
@@ -37,7 +56,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // ==========================
     // Switch Between Signup and Login Screens
+    // ==========================
+
+    /**
+     * Redirects to the Signin page when clicking the "Already have an account?" link.
+     */
     if (switchToLogin) {
         switchToLogin.addEventListener("click", function (event) {
             event.preventDefault();
@@ -45,6 +70,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    /**
+     * Redirects to the Signup page when clicking the "Create an account" link.
+     */
     if (switchToSignup) {
         switchToSignup.addEventListener("click", function (event) {
             event.preventDefault();
