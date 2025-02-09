@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=450, height=650, initial-scale=1.0">
+    <title>Sign In - Nexus AI</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles/nav.css">
+    <link rel="stylesheet" href="../styles/auth.css">
+</head>
+<body>
+    <div class="container">
+
+        <!-- Custom Title Bar (Now at the top) -->
+    <div class="title-bar" style="background-color: #000000;">
+    
+        <div class="nav-buttons">
+        </div>
+    
+        <div class="title-right">
+            <button id="close">✕</button>
+        </div>
+    </div>
+
+        <img src="../assets/nexus_logo_text_transparent.png" alt="Nexus AI Logo" class="logo">
+        <h1>Sign In</h1>
+
+        <form>
+            <input type="email" id="signInEmail" placeholder="Email" required>
+            <div class="password-container">
+                <input type="password" id="signInPassword" placeholder="Password" required>
+                <span class="eye-icon"><i class="fa-solid fa-eye"></i></span>
+            </div>
+
+            <!-- Social Login Buttons -->
+            <div class="social-login">
+                <button type="button" class="social-btn google">
+                    <i class="fa-brands fa-google"></i>
+                </button>
+                <button type="button" class="social-btn facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                </button>
+                <button type="button" class="social-btn apple">
+                    <i class="fa-brands fa-apple"></i>
+                </button>
+            </div>
+
+            <button type="submit" id="signInBtn" class="signup-btn">Sign In</button>
+        </form>
+
+        <p class="login-text">Don't have an account? <a href="#" id="switchToSignup" class="login-link">Sign Up</a></p>
+
+        <!-- Load auth.js -->
+        <script src="../scripts/auth.js"></script>
+        <script src="../scripts/toggle.js"></script>
+    </div>
+</body>
+</html>

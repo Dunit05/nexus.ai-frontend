@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus AI - Event Availability</title>
+    <link rel="stylesheet" href="../styles/nav.css" />
+    <link rel="stylesheet" href="../styles/avaliability.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Custom Title Bar (Now at the top) -->
+    <div class="title-bar">
+    
+      <div class="nav-buttons">
+        <a href="home.html"><button class="nav-button"><i class="fas fa-home"></i></button></a>
+          <button class="nav-button"><i class="fas fa-calendar-alt"></i></button>
+          <button class="nav-button"><i class="fas fa-moon"></i></button>
+      </div>
+  
+      <div class="title-right">
+          <button id="close">✕</button>
+      </div>
+  </div>
+
+    <!-- Event Availability Section -->
+    <div class="container">
+      <h2>Check Availability</h2>
+
+      <label for="task-name">Task Name:</label>
+      <input
+        type="text"
+        id="task-name"
+        placeholder="Enter task name..."
+        required
+      />
+
+      <label for="start-date">Start Date:</label>
+      <input type="date" id="start-date" required />
+
+      <label for="end-date">End Date:</label>
+      <input type="date" id="end-date" required />
+
+      <label for="duration">Duration (Hours):</label>
+      <input
+        type="number"
+        id="duration"
+        placeholder="Enter duration in hours..."
+        required
+      />
+
+      <button id="check-availability">Check Availability</button>
+
+      <div id="result">
+        <h3>Available Time Slots:</h3>
+        <ul id="available-slots"></ul>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("check-availability")
+        .addEventListener("click", async function () {
+          const taskName = document.getElementById("task-name").value.trim();
+          const startDate = document.getElementById("start-date").value;
+          const endDate = document.getElementById("end-date").value;
+          const duration = document.getElementById("duration").value.trim();
+
+          if (!taskName || !startDate || !endDate || !duration) {
+            alert("Please fill in all fields.");
+            return;
+          }
+
+          const requestData = {
+            user_input: JSON.stringify({
+              task_name: taskName,
+              duration_hours: parseInt(duration),
+              week_start: startDate,
+              week_end: endDate,
+            }),
+          };
+
+          document.getElementById("result").style.display = "block";
+          document.getElementById("available-slots").innerHTML =
+            "<li>Checking availability...</li>";
+
+          try {
+            const response = await fetch(
+              "https://nexus-ai-backend-omnu.onrender.com/checkAvailability",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(requestData),
+              }
+            );
+
+            const data = await response.json();
+            console.log("Availability Response:", data);
+
+            if (!data.available_times || data.available_times.length === 0) {
+              document.getElementById("available-slots").innerHTML =
+                "<li>No available slots found.</li>";
+            } else {
+              document.getElementById("available-slots").innerHTML =
+                data.available_times
+                  .map(
+                    (slot) =>
+                      `<li>${slot.date} | ${slot.start_time} - ${slot.end_time}</li>`
+                  )
+                  .join("");
+            }
+          } catch (error) {
+            console.error("Error fetching availability:", error);
+            document.getElementById("available-slots").innerHTML =
+              "<li style='color: red;'>Error fetching availability.</li>";
+          }
+        });
+    </script>
+  </body>
+</html>

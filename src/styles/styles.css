@@ -1,0 +1,78 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Adjusted for proper layout */
+    height: 100vh;
+}
+
+/* Main Home Container */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+/* Puzzle Container */
+.puzzle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 60vh;
+    margin-left: 15px;
+}
+
+/* Row Wrapper */
+.puzzle-row {
+    display: flex;
+    /* gap: 20px; */
+}
+
+/* Puzzle Buttons */
+.puzzle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.puzzle-btn img {
+    width: 170px;
+    height: 170px;
+    object-fit: contain;
+}
+
+/* Hover Effect */
+.puzzle-btn:hover {
+    transform: scale(1.05);
+}
+
+.vault-icon {
+    
+}
+
+.availability-icon {
+    margin-top:62px;
+}
+
+.notes-icon {
+    margin-bottom: 50px;
+
+}
+
+.ask-nexus-icon {
+    margin-top: 10px;
+    margin-right: 55px;
+}
+
+.logo {
+    margin-top: 80px;
+    padding-right: 80px;
+    padding-left: 80px;
+    margin-bottom: -95px;
+}
