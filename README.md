@@ -32,6 +32,7 @@ git clone https://github.com/Dunit05/nexus.ai-frontend
 cd nexus-ai
 npm install
 npm start
+```
 
 ---
 
