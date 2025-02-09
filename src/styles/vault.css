@@ -105,3 +105,92 @@ body {
 .message-box button i {
   font-size: 16px;
 }
+
+/* Chat Container */
+.chat-container {
+  max-height: 350px;
+  overflow-y: auto;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+}
+
+.chat-message {
+  display: flex;
+  align-items: center;
+  max-width: 80%;
+}
+
+.chat-message p {
+  padding: 10px;
+  border-radius: 8px;
+  word-wrap: break-word;
+}
+
+.user-message {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.user-message p {
+  background: #4780f9;
+  color: white;
+}
+
+.ai-message {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.ai-message p {
+  background: #000000;
+  color: white;
+}
+
+/* File Upload Box */
+.file-upload-box {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.file-upload-box.dragover {
+  border-color: blue;
+}
+
+/* Input Box */
+.message-box {
+  display: flex;
+  gap: 10px;
+}
+
+#user-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#send-query {
+  background: #000000;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#send-query:hover {
+  background: #3f3f3f;
+}
+
+/* Hidden file input */
+#file-input {
+  display: none;
+}
